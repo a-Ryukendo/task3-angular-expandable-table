@@ -1,0 +1,72 @@
+/* Simple styles for the expandable table and selection highlight. */
+.task3-wrapper {
+  max-width: 900px;
+  margin: 24px auto;
+  padding: 0 16px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.status {
+  margin: 12px 0;
+  color: #333;
+}
+
+.status.error {
+  color: #b00020;
+}
+
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.data-table th,
+.data-table td {
+  border: 1px solid #e0e0e0;
+  padding: 10px;
+  text-align: left;
+}
+
+.data-table th {
+  background: #f5f5f5;
+}
+
+.data-table tbody tr {
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.data-table tbody tr:hover {
+  background: #f0f8ff;
+}
+
+.id-cell {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.expand-btn {
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  border: 1px solid #d0d0d0;
+  background: #ffffff;
+  cursor: pointer;
+}
+
+.data-table tr.selected {
+  background: #cfe8ff;
+}
+
+.selected-summary {
+  margin-top: 14px;
+  padding: 10px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+}
+
+.selected-ids {
+  font-weight: 600;
+}
+

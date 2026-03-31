@@ -1,0 +1,52 @@
+<div class="task3-wrapper">
+  <h2>Expandable Multi-select Table</h2>
+
+  <div *ngIf="loading" class="status">Loading rows...</div>
+  <div *ngIf="!loading && errorMessage" class="status error">{{ errorMessage }}</div>
+
+  <table *ngIf="!loading" class="data-table">
+    <thead>
+      <tr>
+        <th class="col-id">ID</th>
+        <th>Text 1</th>
+        <th>Text 2</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngIf="visibleRows.length === 0">
+        <td colspan="3" style="text-align: center; padding: 20px; color: red;">
+          DEBUG: No visible rows found! ({{ visibleRows.length }})
+        </td>
+      </tr>
+      <tr
+        *ngFor="let item of visibleRows; trackBy: trackById"
+        [class.selected]="selectedIds.has(item.row.id)"
+        (click)="toggleSelect(item.row.id)"
+      >
+        <td>
+          <div class="id-cell" [style.paddingLeft.px]="item.level * 20">
+            <button
+              *ngIf="hasChildren(item.row)"
+              class="expand-btn"
+              (click)="onToggleExpand(item.row, $event)"
+              type="button"
+            >
+              {{ expandedIds.has(item.row.id) ? '−' : '+' }}
+            </button>
+
+            <span class="id-text">{{ item.row.id }}</span>
+          </div>
+        </td>
+        <td>{{ item.row.text1 }}</td>
+        <td>{{ item.row.text2 }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="selected-summary">
+    Selected IDs:
+    <span class="selected-ids">{{ selectedIdsText }}</span>
+  </div>
+</div>
+
